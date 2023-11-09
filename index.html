@@ -7,20 +7,19 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div id="hello-vue" class="demo">
-    {{ message }}
+
+  <div id="counter" class="demo">
+    Счётчик: {{ counter }}
   </div>
-  <script src="https://unpkg.com/vue@next"></script>
-  <!-- <script src="js/vue.global.js"></script> -->
-  <script>
-    const HelloVueApp = {
-      data() {
-        return {
-          message: 'Hello, World!'
-        }
-      }
-    }
-    Vue.createApp(HelloVueApp).mount('#hello-vue')
-  </script>
+
+  <div id="bind-attribute" class="demo">
+    <span v-bind:title="message">
+      Наведи на меня курсор на пару секунд, чтобы
+      увидеть динамически связанное значение title!
+    </span>
+  </div>
+
+  <script src="js/vue.global.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
