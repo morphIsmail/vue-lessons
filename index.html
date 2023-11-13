@@ -28,6 +28,16 @@
     <p>{{ message }}</p>
     <input v-model="message" />
   </div>
+  <!-- Директива v-if -->
+  <div id="counditional-rendering">
+    <span v-if="seen">Сейчас меня видно</span>
+  </div>
+  <!-- Директива v-for -->
+  <div id="list-rendering">
+    <ol>
+      <li v-for="todo in todos">{{ todo.text }}, мой уровень {{ todo.level }}</li>
+    </ol>
+  </div>
   <script src="js/vue.global.js"></script>
   <script src="js/main.js"></script>
 </body>
