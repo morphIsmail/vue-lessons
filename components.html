@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Компоненты на Vue.js</title>
+</head>
+<body>
+  <!-- Компоненты -->
+  <div id="todo-list-app">
+    <ol>
+      <!-- Создание экземпляра компонента todo-item, можно передавать каждому компоненту todo-item объект с информацией о задаче, который может динамически изменяться. -->
+      <todo-item
+        v-for="item in groceryList"
+        v-bind:todo="item">
+      </todo-item>
+    </ol>
+  </div>
+
+  <script src="js/vue.global.js"></script>
+  <script src="js/components.js"></script>
+</body>
+</html>
