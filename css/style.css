@@ -8,3 +8,9 @@
   user-select: none;
   overflow-x: auto;
 }
+input, button {
+  font-family: sans-serif;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  padding: 10px;
+}

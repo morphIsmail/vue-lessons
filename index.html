@@ -7,18 +7,27 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+  <!-- Счётчик -->
   <div id="counter" class="demo">
     Счётчик: {{ counter }}
   </div>
-
+  <!-- Директива v-bind -->
   <div id="bind-attribute" class="demo">
     <span v-bind:title="message">
       Наведи на меня курсор на пару секунд, чтобы
       увидеть динамически связанное значение title!
     </span>
   </div>
-
+  <!-- Директива v-on -->
+  <div id="event-handling">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">Перевернуть сообщение</button>
+  </div>
+  <!-- Директива v-model -->
+  <div id="two-way-binding">
+    <p>{{ message }}</p>
+    <input v-model="message" />
+  </div>
   <script src="js/vue.global.js"></script>
   <script src="js/main.js"></script>
 </body>
