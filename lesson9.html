@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Вычисляемые свойства и наблюдатели</title>
+</head>
+<body>
+  <a href="https://v3.ru.vuejs.org/ru/guide/computed.html">Документация</a>
+
+  <div id="computed-basics" class="demo">
+    <p>Есть опубликованные книги:</p>
+    <span>{{ publishedBooksMessage }}</span>
+  </div>
+
+  <script src="js/vue.global.js"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          author: {
+            name: 'John Doe',
+            books: [
+              'Vue 2 - Advanced Guide',
+              'Vue 3 - Basic Guide',
+              'Vue 4 - The Mystery'
+            ]
+          }
+        }
+      },
+      computed: {
+        // геттер вычисляемого свойства
+        publishedBooksMessage() {
+          // `this` указывает на экземпляр vm
+          return this.author.books.length > 0 ? 'Да' : 'Нет'
+        }
+      }
+    }).mount('#computed-basics')
+  </script>
+</body>
+</html>

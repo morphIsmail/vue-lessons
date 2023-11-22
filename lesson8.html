@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Свойства data и методы</title>
+</head>
+<body>
+  <a href="https://v3.ru.vuejs.org/ru/guide/data-methods.html">Документация</a>
+
+  <div id="app">
+    <p>{{ count }}</p>
+    <button @click="increment">Увеличить счетчик</button>
+  </div>
+
+
+  <script src="js/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return { count: 4 }
+      },
+      methods: {
+        increment() {
+          // `this` указывает на экземпляр компонента
+          this.count++
+        }
+      }
+    })
+
+    const vm = app.mount('#app')
+
+    console.log(vm.$data.count) // => 4
+    console.log(vm.count)       // => 4
+
+    // Присвоение значения в vm.count также обновит $data.count
+    vm.count = 5
+    console.log(vm.$data.count) // => 5
+
+    // ... и наоборот
+    vm.$data.count = 6
+    console.log(vm.count) // => 6
+
+    vm.increment()
+    console.log(vm.count) // => 7
+  </script>
+</body>
+</html>
