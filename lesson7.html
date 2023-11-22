@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Синтаксис шаблона Vue.js</title>
+</head>
+<body>
+  <a href="https://v3.ru.vuejs.org/ru/guide/template-syntax.html">Документация</a>
+  
+  <div id="example1" class="demo">
+    <!-- Текстовая интерполяция с использованием «Mustache»-синтаксиса из двойных фигурных скобок -->
+    <p>Сообщение: {{ msg }}</p>
+    <p v-once>Это сообщение никогда не изменится: {{ msg }}</p>
+
+    <!-- Значение выражения в двойных фигурных скобках обрабатывается как обычный текст, а не как HTML -->
+    <p>Двойные фигурные скобки: {{ rawHtml }}</p>
+    <p>Директива v-html: <span v-html="rawHtml"></span></p>
+
+    <!-- Синтаксис двойных фигурных скобок нельзя использовать внутри HTML-атрибутов. Вместо него следует использовать директиву v-bind -->
+    <div v-bind:id="dynamicId">1</div>
+
+    <!-- Vue поддерживает всю мощь выражений JavaScript внутри привязки к данным -->
+    <p>{{ number + 1 }}</p>
+    <p>{{ ok ? 'YES' : 'NO' }}</p>
+    <p>{{ message.split('').reverse().join('') }}</p>
+    <div v-bind:id="'list-' + id">5</div>
+
+    <!-- сокращённая запись v-bind -->
+    <a :href="url"> ... </a>
+    <!-- сокращённая запись v-on -->
+    <a @click="doSomething"> ... </a>
+  </div>
+
+  <script src="js/vue.global.js"></script>
+  <script>
+    const RenderHtmlApp = {
+      data() {
+        return {
+          msg: 'Hello, World!',
+          rawHtml: '<span style="color: red">This should be red.</span>',
+          dynamicId: 1,
+          number: 3,
+          ok: false,
+          message: 'Vue',
+          id: 5,
+        }
+      }
+    }
+
+    Vue.createApp(RenderHtmlApp).mount('#example1')
+  </script>
+</body>
+</html>
