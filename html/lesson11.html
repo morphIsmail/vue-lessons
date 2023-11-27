@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Условная отрисовка</title>
+</head>
+<body>
+  <a href="https://v3.ru.vuejs.org/ru/guide/conditional.html">Документация</a>
+
+  <div id="app">
+    <h1 v-if="awesome">Директива v-if</h1>
+    <h1 v-else>awesome = false</h1>
+    <!-- 
+      Отличия в том, что элемент с v-show будет всегда отрисовываться и оставаться в DOM, а переключаться будет лишь его CSS свойство display. v-show нельзя использовать на элементе <template> и она не работает с v-else. 
+    -->
+    <h1 v-show="awesome">Директива v-show</h1>   
+
+    <template v-if="ok">
+      <h1>Заголовок</h1>
+      <p>Абзац 1</p>
+      <p>Абзац 2</p>
+    </template>
+
+    <div v-if="type === 'A'">
+      A
+    </div>
+    <div v-else-if="type === 'B'">
+      B
+    </div>
+    <div v-else-if="type === 'C'">
+      C
+    </div>
+    <div v-else>
+      Точно не A, B или C
+    </div>
+  </div>
+
+  <script src="../js/vue.global.prod.js"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          awesome: true,
+          ok: true,
+          type: 'D'
+        }
+      }
+    }).mount("#app") 
+  </script>
+</body>
+</html>

@@ -14,3 +14,10 @@ input, button {
   border-radius: 2px;
   padding: 10px;
 }
+.active {
+  background-color: tomato;
+  padding: 15px;
+  color: #fff;
+  font-family: sans-serif;
+  margin-bottom: 10px;
+}

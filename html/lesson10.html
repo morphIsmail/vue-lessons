@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Работа с классами и стилями</title>
+</head>
+<body>
+  <a href="https://v3.ru.vuejs.org/ru/guide/class-and-style.html">Документация</a>
+
+  <div id="app">
+    <div
+      class="static"
+      :class="{ active: isActive }"
+    >Активный эелемент</div>
+    <div :class="classObject">Объектный синтаксис</div>
+    <div :class="[activeClass, errorClass]"></div>
+    <div :class="[isActive ? activeClass : '', errorClass]">Тернарный оператор в массиве</div>
+    <div :class="[{ active: isActive }, errorClass]">Смешанный синтаксис</div>
+
+    <div :style="{ color: activeColor, fontSize: fontSize + 'px' }">Инлайн стили</div>
+    <div :style="styleObject">Инлайн стили, Объектный синтаксис</div>
+    <div :style="[baseStyles, overridingStyles]">Инлайн стили, синтаксис с массивоам</div>
+  </div>
+
+  <script src="../js/vue.global.prod.js"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          isActive: true,
+          
+          classObject: {
+            active: true,
+            'text-danger': true
+          },
+
+          ctiveClass: 'active',
+          errorClass: 'text-danger',
+
+          activeColor: 'red',
+          fontSize: 30,
+
+          styleObject: {
+            color: 'blue',
+            fontSize: '16px'
+          }
+        }
+      },
+      computed: {
+        classObject() {
+          return {
+            active: this.isActive && !this.error,
+            'text-danger': this.error && this.error.type === 'fatal'
+          }
+        }
+      }
+    }).mount("#app") 
+  </script>
+</body>
+</html>

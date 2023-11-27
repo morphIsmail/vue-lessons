@@ -6,10 +6,21 @@
   <title>Изучаем Vue.js</title>
 </head>
 <body>
+  <a href="">Документация</a>
   
-  <script src="js/vue.global.js"></script>
-  <script>
+  <div id="app">
 
+  </div>
+
+  <script src="../js/vue.global.prod.js"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+
+        }
+      }
+    }).mount("#app") 
   </script>
 </body>
 </html>
