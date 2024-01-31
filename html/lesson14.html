@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Работа с формами</title>
+</head>
+<body>
+  <a href="https://v3.ru.vuejs.org/ru/guide/forms.html">Документация</a>
+  <hr>
+  
+  <div id="app">
+    <input v-model="message1" placeholder="отредактируй меня" />
+    <p>Сообщение: {{ message1 }}</p>
+    <hr>
+  
+    <span>Многострочное сообщение:</span>
+    <p style="white-space: pre-line;">{{ message2 }}</p>
+    <br />
+    <textarea v-model="message2" placeholder="введите несколько строчек"></textarea>
+    <!-- НЕ РАБОТАЕТ -->
+    <textarea>{{ text }}</textarea>
+    <!-- ok -->
+    <textarea v-model="text"></textarea>
+    <hr>
+
+    <input type="checkbox" id="checkbox" v-model="checked" />
+    <label for="checkbox">{{ checked }}</label>
+    <hr>
+
+    <input type="checkbox" id="jack" value="Джек" v-model="checkedNames" />
+    <label for="jack">Джек</label>
+    <input type="checkbox" id="john" value="Джон" v-model="checkedNames" />
+    <label for="john">Джон</label>
+    <input type="checkbox" id="mike" value="Майк" v-model="checkedNames" />
+    <label for="mike">Майк</label>
+    <br />
+    <span>Отмеченные имена: {{ checkedNames }}</span>
+    <hr>
+
+    <input type="radio" id="one" value="Один" v-model="picked" />
+    <label for="one">Один</label>
+    <br />
+    <input type="radio" id="two" value="Два" v-model="picked" />
+    <label for="two">Два</label>
+    <br />
+    <span>Выбрано: {{ picked }}</span>
+    <hr>
+
+    <select v-model="selected">
+      <option disabled value="">Выберите один из вариантов</option>
+      <option>А</option>
+      <option>Б</option>
+      <option>В</option>
+    </select>
+    <p>Выбрано: {{ selected }}</p>
+
+    <!-- синхронизация после события "change" вместо "input" -->
+    <input v-model.lazy="msg" />
+    <!-- Для автоматического приведения к числу -->
+    <input v-model.number="age" type="text" />
+    <!-- Если необходимо, чтобы пробельные символы в начале и в конце строки автоматически обрезались -->
+    <input v-model.trim="msg">
+
+  </div>
+
+  <script src="../js/vue.global.prod.js"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          message1: "Hello",
+          message2: "Vue",
+          checked: true,
+          checkedNames: ['Джек', 'Майк'],
+          picked: 'Два',
+          selected: 'В'
+        }
+      }
+    }).mount("#app")
+
+  </script>
+</body>
+</html>

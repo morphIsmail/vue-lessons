@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Обработка событий</title>
+</head>
+<body>
+  <a href="https://v3.ru.vuejs.org/ru/guide/events.html">Документация</a>
+  
+  <!-- v-on:click="methodName" -->
+  <!-- @click="methodName" -->
+  <!-- @click="one, two" -->
+  <div id="app-1">
+    <button @click="counter += 1">Добавить 1</button>
+    <p>Кнопка выше была нажата {{ counter }} раз</p>
+  </div>
+
+  <div id="app-2">
+    <!-- `greet` — это название метода, объявленного ниже -->
+    <button @click="greet">Поприветствовать</button>
+  </div>
+
+  <!-- Модификаторы событий -->
+  <!-- всплытие события click будет остановлено -->
+  <a @click.stop="doThis"></a>
+  <!-- событие submit перестанет перезагружать страницу -->
+  <form @submit.prevent="onSubmit"></form>
+  <!-- модификаторы можно объединять в цепочки -->
+  <a @click.stop.prevent="doThat"></a>
+  <!-- можно использовать без обработчиков -->
+  <form @submit.prevent></form>
+  <!-- вызов обработчика только в случае наступления события непосредственно -->
+  <!-- на данном элементе (то есть не на дочернем компоненте) -->
+  <div @click.self="doThat"></div>
+  <!-- обработчик click будет вызван максимум 1 раз -->
+  <a @click.once="doThis"></a>
+
+  <!-- Модификаторы клавиш -->
+  <!-- вызвать `vm.submit()` только если `key` будет `Enter` -->
+  <input @keyup.enter="submit" />
+  <!-- Псевдонимы клавиш
+    .enter
+    .tab
+    .delete (ловит как «Delete», так и «Backspace»)
+    .esc
+    .space
+    .up
+    .down
+    .left
+    .right
+Системные модификаторы клавиш
+    .ctrl
+    .alt
+    .shift
+    .meta
+  -->
+  <!-- Alt + Enter -->
+  <input @keyup.alt.enter="clear" />
+  <!-- Ctrl + Click -->
+  <div @click.ctrl="doSomething">Сделать что-нибудь</div>
+
+  <!-- сработает, даже если также нажаты Alt или Shift -->
+  <button @click.ctrl="onClick">A</button>
+  <!-- сработает, только когда нажат Ctrl и не нажаты никакие другие клавиши -->
+  <button @click.ctrl.exact="onCtrlClick">A</button>
+  <!-- сработает, только когда не нажаты никакие системные модификаторы -->
+  <button @click.exact="onClick">A</button>
+  <!-- Модификаторы клавиш мыши
+    .left
+    .right
+    .middle
+  -->
+
+  <script src="../js/vue.global.prod.js"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          counter: 0
+        }
+      }
+    }).mount("#app-1") 
+
+    Vue.createApp({
+      data() {
+        return {
+          name: 'Vue.js'
+        }
+      },
+      methods: {
+        greet(event) {
+          // `this` в методе указывает на текущий активный экземпляр
+          alert('Привет, ' + this.name + '!')
+          // `event` — нативное событие DOM
+          if (event) {
+            alert(event.target.tagName)
+            // event.preventDefault()
+          }
+        }
+      }
+    }).mount("#app-2") 
+  </script>
+</body>
+</html>
