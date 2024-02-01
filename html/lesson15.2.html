@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Параметры компонентов</title>
+</head>
+<body>
+  <a href="https://v3.ru.vuejs.org/ru/guide/component-basics.html">Документация</a>
+  
+  <div id="blog-post-demo" class="demo">
+    <blog-post title="My journey with Vue" text="text 1"></blog-post>
+    <blog-post title="Blogging with Vue" text="text 2"></blog-post>
+    <blog-post title="Why Vue is so fun" text="text 3"></blog-post>
+  </div>
+
+  <script src="../js/vue.global.prod.js"></script>
+  <script>
+    const app = Vue.createApp({})
+
+    app.component('blog-post', {
+      props: ['title', 'text'],
+      template: `<h4>{{ title }}</h4><p>{{ text }}</p>`
+    })
+
+    app.mount('#blog-post-demo')
+  </script>
+</body>
+</html>

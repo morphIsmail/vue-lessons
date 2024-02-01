@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Основы компонентов</title>
+</head>
+<body>
+  <a href="https://v3.ru.vuejs.org/ru/guide/component-basics.html">Документация</a>
+  
+  <div id="app">
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+  </div>
+
+  <script src="../js/vue.global.prod.js"></script>
+  <script>
+    // Создаём приложение Vue
+    const app = Vue.createApp({})
+
+    // Определяем новый глобальный компонент с именем button-counter
+    app.component('button-counter', {
+      data() {
+        return {
+          count: 0
+        }
+      },
+      template: `
+        <button @click="count++">
+          Счётчик кликов — {{ count }}
+        </button>`
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+</html>

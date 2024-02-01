@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Параметры компонентов</title>
+</head>
+<body>
+  <a href="https://v3.ru.vuejs.org/ru/guide/component-basics.html">Документация</a>
+  
+  <div id="blog-posts-events-demo">
+    <div :style="{ fontSize: postFontSize + 'em' }">
+      <blog-post @enlarge-text="postFontSize += 0.1"
+        v-for="post in posts"
+        :key="post.id"
+        :title="post.title"
+        :description="post.description"
+      ></blog-post>
+    </div>
+  </div>
+
+  <script src="../js/vue.global.prod.js"></script>
+  <script>
+    const App = {
+      data() {
+        return {
+          posts: [
+            { id: 1, title: 'My journey with Vue', description: 'text 1' },
+            { id: 2, title: 'Blogging with Vue', description: 'text 2' },
+            { id: 3, title: 'Why Vue is so fun', description: 'text 3' }
+          ],
+          postFontSize: 1
+        }
+      }
+    }
+
+    const app = Vue.createApp(App)
+
+    app.component('blog-post', {
+      props: ['title', 'description'],
+      template: `
+      <div class="blog-post">
+        <h4>{{ title }}</h4>
+        <div>{{ description }}</div>
+        <button @click="$emit('enlargeText')">
+          Увеличить размер текста
+        </button>
+      </div>`
+    })
+
+    app.mount('#blog-posts-events-demo')
+  </script>
+</body>
+</html>
