@@ -1,0 +1,87 @@
+#app {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  max-width: 700px;
+  padding: 50px;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 0px 0px 40px #ddd;
+}
+body {
+  margin: 30px;
+}
+h2 {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+p, h4 {
+  line-height: 1.6;
+}
+input, label {
+  display: block;
+  width: 100%;
+}
+input {
+  margin-bottom: 15px;
+}
+.bad {
+  color: rgb(250, 81, 81);
+}
+.normal {
+  color: #aaa;
+}
+.good {
+  color: rgb(115, 238, 115);
+}
+.questions {
+  border-top: 2px dashed #ccc;
+  border-bottom: 2px dashed #ccc;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.result {
+  display: flex;
+}
+.result > div {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+.result > div:nth-child(1) {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: rgb(250, 81, 81);
+}
+.result > div:nth-child(2) {
+  background-color: #aaa;
+}
+.result > div:nth-child(3) {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: rgb(115, 238, 115);
+}
+@media screen and (max-width: 440px) {
+  .result {
+    flex-direction: column;
+  }
+  .result > div {
+    max-width: 100px;
+  }
+  .result > div:nth-child(1) {
+    border-radius: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 100%;
+  }
+  .result > div:nth-child(2) {
+    width: 100%;
+  }
+  .result > div:nth-child(3) {
+    border-radius: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 100%;
+  }
+}
