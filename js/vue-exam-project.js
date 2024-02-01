@@ -18,13 +18,26 @@ const App = {
   },
   computed: {
     computedTotalScore() {
-
+      this.totalScore = 0
+      for(let i=0; i<this.values.length; i++) {
+        this.totalScore += this.values[i]
+      }
+      return this.totalScore
     },
     computedOverallRating() {
-
+      this.overallRating = Math.floor(this.totalScore / 8)
+      return this.overallRating
     },
     myLuckLevel() {
-
+      if(this.overallRating >=0 && this.overallRating <=45) {
+        return {type: 'неудачливый', style: 'bad', char: '😔'}
+      }
+      if(this.overallRating >=46 && this.overallRating <=74) {
+        return {type: 'нейтральный', style: 'normal', char: '😑'}
+      }
+      if(this.overallRating >=75 && this.overallRating <=100) {
+        return {type: 'удачливый', style: 'good', char: '😁'}
+      }
     }
   }
 }
