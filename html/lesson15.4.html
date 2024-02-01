@@ -11,7 +11,9 @@
   
   <div id="blog-posts-events-demo">
     <div :style="{ fontSize: postFontSize + 'em' }">
-      <blog-post @enlarge-text="postFontSize += 0.1"
+      <blog-post 
+        @enlarge-text="postFontSize += 0.1"
+        @ensmall-text="postFontSize -= 0.1"
         v-for="post in posts"
         :key="post.id"
         :title="post.title"
@@ -45,6 +47,9 @@
         <div>{{ description }}</div>
         <button @click="$emit('enlargeText')">
           Увеличить размер текста
+        </button>
+        <button @click="$emit('ensmallText')">
+          Уменьшить размер текста
         </button>
       </div>`
     })
